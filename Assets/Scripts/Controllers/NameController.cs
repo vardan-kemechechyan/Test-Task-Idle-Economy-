@@ -6,14 +6,16 @@ using UnityEngine;
 public class NameController : MonoBehaviour
 {
 	[SerializeField] TextMeshProUGUI businessNameUI;
+	string businessName;
 	public string BusinessName
 	{
 		get 
-		{ 
-			return businessNameUI.text;
+		{
+			return businessName;
 		}
 		set 
 		{
+			businessName = value;
 			businessNameUI.text = value;
 		}
 	}

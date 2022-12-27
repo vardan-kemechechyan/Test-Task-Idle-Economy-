@@ -14,102 +14,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AvailableBusiness:
   - businessName: Business 1
+    purchased: 1
     businessInfo:
+      level: 1
       incomeDelay: 3
       baseCost: 3
       baseIncome: 3
-      Upgrade1:
+      progressBarValue: 0
+      Upgrades:
+      - upgradeName: Name 1
         cost: 50
         incomeRate: 50
-      Upgrade2:
+        purchasedStatus: 0
+      - upgradeName: Name 2
         cost: 400
         incomeRate: 100
-    incomeDelay: 3
-    baseCost: 3
-    baseIncome: 3
-    Upgrade1:
-      cost: 50
-      incomeRate: 50
-    Upgrade2:
-      cost: 400
-      incomeRate: 100
+        purchasedStatus: 0
   - businessName: Business 2
+    purchased: 0
     businessInfo:
+      level: 0
       incomeDelay: 6
       baseCost: 40
       baseIncome: 40
-      Upgrade1:
+      progressBarValue: 0
+      Upgrades:
+      - upgradeName: Name 1
         cost: 1200
         incomeRate: 100
-      Upgrade2:
+        purchasedStatus: 0
+      - upgradeName: Name 2
         cost: 4000
         incomeRate: 200
-    incomeDelay: 6
-    baseCost: 40
-    baseIncome: 40
-    Upgrade1:
-      cost: 1200
-      incomeRate: 100
-    Upgrade2:
-      cost: 4000
-      incomeRate: 200
+        purchasedStatus: 0
   - businessName: Business 3
+    purchased: 0
     businessInfo:
+      level: 0
       incomeDelay: 10
       baseCost: 200
       baseIncome: 200
-      Upgrade1:
+      progressBarValue: 0
+      Upgrades:
+      - upgradeName: Name 1
         cost: 6000
         incomeRate: 100
-      Upgrade2:
+        purchasedStatus: 0
+      - upgradeName: Name 2
         cost: 20000
         incomeRate: 150
-    incomeDelay: 10
-    baseCost: 200
-    baseIncome: 200
-    Upgrade1:
-      cost: 6000
-      incomeRate: 100
-    Upgrade2:
-      cost: 20000
-      incomeRate: 150
+        purchasedStatus: 0
   - businessName: Business 4
+    purchased: 0
     businessInfo:
+      level: 0
       incomeDelay: 17
       baseCost: 1000
       baseIncome: 1000
-      Upgrade1:
+      progressBarValue: 0
+      Upgrades:
+      - upgradeName: Name 1
         cost: 15000
         incomeRate: 100
-      Upgrade2:
+        purchasedStatus: 0
+      - upgradeName: Name 2
         cost: 50000
         incomeRate: 200
-    incomeDelay: 17
-    baseCost: 1000
-    baseIncome: 1000
-    Upgrade1:
-      cost: 15000
-      incomeRate: 100
-    Upgrade2:
-      cost: 50000
-      incomeRate: 200
+        purchasedStatus: 0
   - businessName: Business 5
+    purchased: 0
     businessInfo:
+      level: 0
       incomeDelay: 30
       baseCost: 5000
       baseIncome: 5000
-      Upgrade1:
+      progressBarValue: 0
+      Upgrades:
+      - upgradeName: Name 1
         cost: 100000
         incomeRate: 200
-      Upgrade2:
+        purchasedStatus: 0
+      - upgradeName: Name 2
         cost: 500000
         incomeRate: 400
-    incomeDelay: 30
-    baseCost: 5000
-    baseIncome: 5000
-    Upgrade1:
-      cost: 100000
-      incomeRate: 200
-    Upgrade2:
-      cost: 50000
-      incomeRate: 400
+        purchasedStatus: 0

@@ -9,4 +9,16 @@
         BUSINESS_5,
         NONE
     }
+
+    public enum PlayerPrefSaveNames
+    {
+        FIRST_LAUNCH,
+        PLAYER_MONEY
+    }
+
+    public enum GameState
+    {
+        PLAYING,
+        PAUSED
+    }
 }
