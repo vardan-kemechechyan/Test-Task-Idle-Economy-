@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using static Configuration;
 
-public class SaveSystem : MonoBehaviour
+public class SaveSystem : Singleton<SaveSystem>
 {
 	[SerializeField] string json_save;
 	[SerializeField] Configuration config;
+
+	BusinessManager bManager;
 
 	public static bool SAVE_LOADED = false;
 
@@ -16,6 +19,8 @@ public class SaveSystem : MonoBehaviour
 
 	public SaveStructure LoadData()
 	{
+		if(bManager == null ) bManager = BusinessManager.GetInstance();
+
 		data = new SaveStructure();
 
 		if( !File.Exists(Application.persistentDataPath + savePath) )
@@ -45,6 +50,8 @@ public class SaveSystem : MonoBehaviour
 
 	public void SaveData()
 	{
+		bManager.PrepareDataToSave();
+
 		data = new SaveStructure();
 		data.businessessInformation = config.ReturnBusinessDescriptions();
 

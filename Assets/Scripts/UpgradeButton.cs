@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static BusinessDescription;
+using static Configuration;
 
 public class UpgradeButton : MonoBehaviour, IPurchasable
 {
@@ -17,6 +17,7 @@ public class UpgradeButton : MonoBehaviour, IPurchasable
 
 	#region Fields
 
+	int id;
 	bool upgradeStatus;
 	string upgradeName;
 	float income;
@@ -43,6 +44,14 @@ public class UpgradeButton : MonoBehaviour, IPurchasable
 		{
 			upgradeName = value;
 			nameUI.text = value;
+		}
+	}
+	public int ID
+	{
+		get { return id; }
+		set
+		{
+			id = value;
 		}
 	}
 
@@ -78,6 +87,7 @@ public class UpgradeButton : MonoBehaviour, IPurchasable
 		UpgradeName = upgrade .upgradeName;
 		Income = upgrade.incomeRate;
 		LevelupCost = upgrade.cost;
+		ID = upgrade.id;
 
 		pUpgController = transform.parent.GetComponent<UpgradeController>();
 	}

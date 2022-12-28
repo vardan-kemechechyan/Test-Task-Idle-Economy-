@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static BusinessDescription;
 using static Configuration;
 
 public class UpgradeController : MonoBehaviour
@@ -53,7 +52,7 @@ public class UpgradeController : MonoBehaviour
 	{
 		for(int i = 0; i < upgradeButtons.Count; i++)
 		{
-			if(upgradeButtons[i].UpgradeName == upgradelist[0].upgradeName)
+			if(upgradeButtons[i].ID == upgradelist[0].id)
 			{
 				upgradelist[0].purchasedStatus = upgradeButtons[i].UpgradeStatus;
 				continue;

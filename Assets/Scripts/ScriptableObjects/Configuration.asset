@@ -13,8 +13,103 @@ MonoBehaviour:
   m_Name: Configuration
   m_EditorClassIdentifier: 
   AvailableBusiness:
-  - {fileID: 11400000, guid: 6df3f2f46435fc141863e97e6e69e305, type: 2}
-  - {fileID: 11400000, guid: 97b3c0a9db01b9348b861a4a8dda7158, type: 2}
-  - {fileID: 11400000, guid: e466282c04ee0e24d9cdfcc4649630d3, type: 2}
-  - {fileID: 11400000, guid: e043c1490c731b94dbff6b4cd42396b3, type: 2}
-  - {fileID: 11400000, guid: 2da9a789c938cf34db107fad467127ee, type: 2}
+  - id: 0
+    businessName: Business 1
+    purchased: 1
+    businessInfo:
+      level: 1
+      incomeDelay: 3
+      baseCost: 3
+      baseIncome: 3
+      progressBarValue: 0
+      Upgrades:
+      - id: 0
+        upgradeName: Name 1
+        cost: 50
+        incomeRate: 50
+        purchasedStatus: 0
+      - id: 1
+        upgradeName: Name 2
+        cost: 400
+        incomeRate: 100
+        purchasedStatus: 0
+  - id: 1
+    businessName: Business 2
+    purchased: 0
+    businessInfo:
+      level: 0
+      incomeDelay: 6
+      baseCost: 40
+      baseIncome: 40
+      progressBarValue: 0
+      Upgrades:
+      - id: 0
+        upgradeName: Name 1
+        cost: 1200
+        incomeRate: 100
+        purchasedStatus: 0
+      - id: 1
+        upgradeName: Name 2
+        cost: 4000
+        incomeRate: 200
+        purchasedStatus: 0
+  - id: 2
+    businessName: Business 3
+    purchased: 0
+    businessInfo:
+      level: 0
+      incomeDelay: 10
+      baseCost: 200
+      baseIncome: 200
+      progressBarValue: 0
+      Upgrades:
+      - id: 0
+        upgradeName: Name 1
+        cost: 6000
+        incomeRate: 100
+        purchasedStatus: 0
+      - id: 1
+        upgradeName: Name 2
+        cost: 20000
+        incomeRate: 150
+        purchasedStatus: 0
+  - id: 3
+    businessName: Business 4
+    purchased: 0
+    businessInfo:
+      level: 0
+      incomeDelay: 17
+      baseCost: 1000
+      baseIncome: 1000
+      progressBarValue: 0
+      Upgrades:
+      - id: 0
+        upgradeName: Name 1
+        cost: 15000
+        incomeRate: 100
+        purchasedStatus: 0
+      - id: 1
+        upgradeName: Name 2
+        cost: 50000
+        incomeRate: 200
+        purchasedStatus: 0
+  - id: 4
+    businessName: Business 5
+    purchased: 0
+    businessInfo:
+      level: 0
+      incomeDelay: 30
+      baseCost: 5000
+      baseIncome: 5000
+      progressBarValue: 0
+      Upgrades:
+      - id: 0
+        upgradeName: Name 1
+        cost: 100000
+        incomeRate: 200
+        purchasedStatus: 0
+      - id: 0
+        upgradeName: Name 2
+        cost: 500000
+        incomeRate: 200
+        purchasedStatus: 0

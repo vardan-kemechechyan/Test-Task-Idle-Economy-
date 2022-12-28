@@ -30,7 +30,25 @@ public class SaveSystemEditor : Editor
             script.DeleteSave(0);
         }
 
-        #endregion
-    }
+		#endregion
+
+		#region Save
+
+		var style2 = new GUIStyle(GUI.skin.button)
+		{
+			alignment = TextAnchor.MiddleCenter,
+			fontStyle = FontStyle.Bold,
+			fixedHeight = 40f
+		};
+
+		style2.normal.textColor = Color.green;
+
+		if(GUILayout.Button("Save", style2))
+		{
+			script.SaveData();
+		}
+
+		#endregion
+	}
 }
 #endif

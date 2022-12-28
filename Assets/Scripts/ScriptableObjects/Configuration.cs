@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Security.Cryptography;
 
 [CreateAssetMenu]
 public class Configuration : ScriptableObject
 {
     [SerializeField] List<BusinessDescription> AvailableBusiness;
 
-	/*[System.Serializable]
+	[System.Serializable]
 	public class BusinessDescription
     {
-        public string businessName;
+        public int id;
+		public string businessName;
         public bool purchased;
         public BusinessInfo businessInfo;
     }
@@ -29,12 +31,13 @@ public class Configuration : ScriptableObject
 	[System.Serializable]
     public class UpgradeInfo
     {
-        public string upgradeName;
+        public int id;
+		public string upgradeName;
         public float cost;
         public float incomeRate;
         public bool purchasedStatus;
     }
-*/
+
 	public List<BusinessDescription> ReturnBusinessDescriptions()
 	{
 		return AvailableBusiness;
@@ -45,6 +48,19 @@ public class Configuration : ScriptableObject
         for(int i = 0; i < saveFile.Count; i++)
         {
 			AvailableBusiness[i] = saveFile[i];
+
+			AvailableBusiness[i].purchased = saveFile[i].purchased;
+			AvailableBusiness[i].businessInfo.progressBarValue = saveFile[i].businessInfo.progressBarValue;
+            AvailableBusiness[i].businessInfo.level = saveFile[i].businessInfo.level;
+
+			for(int j = 0; j < saveFile[i].businessInfo.Upgrades.Count; j++)
+			{
+				if(AvailableBusiness[i].businessInfo.Upgrades[j].id == saveFile[i].businessInfo.Upgrades[j].id)
+				{
+					AvailableBusiness[i].businessInfo.Upgrades[j].purchasedStatus = saveFile[i].businessInfo.Upgrades[j].purchasedStatus;
+					continue;
+				}
+			}
 		}
     }
 }

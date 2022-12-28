@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Enums;
+using Unity.VisualScripting.FullSerializer;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-	[SerializeField] BusinessManager bManager;
-	[SerializeField] SaveSystem		 sManager;
+	BusinessManager bManager;
+	SaveSystem		 sManager;
 
 	GameState currentGameState;
 	public GameState CurrentGameState
@@ -24,17 +25,15 @@ public class GameManager : MonoBehaviour
 		print("out of focus");
 
 		if(!hasFocus)
-		{
-			bManager.PrepareDataToSave();
 			sManager.SaveData();
-
-			print("out of focus");
-		}
 	}
 
 	private IEnumerator Start()
 	{
 		Application.targetFrameRate = 60;
+
+		bManager = BusinessManager.GetInstance();
+		sManager = SaveSystem.GetInstance();
 
 		CurrentGameState = GameState.PAUSED;
 
