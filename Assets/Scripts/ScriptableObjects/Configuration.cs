@@ -7,7 +7,7 @@ public class Configuration : ScriptableObject
 {
     [SerializeField] List<BusinessDescription> AvailableBusiness;
 
-	[System.Serializable]
+	/*[System.Serializable]
 	public class BusinessDescription
     {
         public string businessName;
@@ -27,25 +27,14 @@ public class Configuration : ScriptableObject
 	}
 
 	[System.Serializable]
-    public struct UpgradeInfo
+    public class UpgradeInfo
     {
         public string upgradeName;
         public float cost;
         public float incomeRate;
         public bool purchasedStatus;
     }
-
-    public BusinessDescription ReturnDefaultPurchasedBusiness()
-    {
-        foreach(var business in AvailableBusiness)
-        {
-            if(business.purchased)
-                return business;
-        }
-
-        return null;
-    }
-
+*/
 	public List<BusinessDescription> ReturnBusinessDescriptions()
 	{
 		return AvailableBusiness;

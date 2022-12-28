@@ -52,6 +52,23 @@ public class BusinessManager : Singleton<BusinessManager>, ISubscribeUnsubscribe
 		PlayerBalance += income;
 	}
 
+	public bool RequestPermissionToBuy( float price )
+	{
+		if( PlayerBalance < price ) return false;
+
+		PlayerBalance -= price;
+
+		return true;
+	}
+	public void PrepareDataToSave()
+	{
+		foreach(var business in AllBusiness)
+			business.UpdateBusinessDescription();
+
+		PlayerPrefs.SetFloat(Enums.PlayerPrefSaveNames.PLAYER_MONEY.ToString(), PlayerBalance);
+		PlayerPrefs.Save();
+	}
+
 	private void OnDestroy()
 	{
 		UnSubscribe();
@@ -70,13 +87,5 @@ public class BusinessManager : Singleton<BusinessManager>, ISubscribeUnsubscribe
 	public void UnSubscribe()
 	{
 		CustomGameEventList.GenerateIncome -= IncreasePlayerBalance;
-	}
-
-	public void SaveData()
-	{
-		//TODO: Gather information from all businesses and update config file
-	
-		PlayerPrefs.SetFloat(Enums.PlayerPrefSaveNames.PLAYER_MONEY.ToString(), PlayerBalance);
-		PlayerPrefs.Save();
 	}
 }

@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Enums;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
 	[SerializeField] BusinessManager bManager;
-	[SerializeField] SaveSystem		 sManager; //change to event
+	[SerializeField] SaveSystem		 sManager;
 
 	GameState currentGameState;
 	public GameState CurrentGameState
@@ -19,13 +19,16 @@ public class GameManager : Singleton<GameManager>
 			CustomGameEventList.ChangeGameState(currentGameState);
 		}
 	}
-
 	void OnApplicationFocus(bool hasFocus)
 	{
+		print("out of focus");
+
 		if(!hasFocus)
 		{
-			bManager.SaveData();
+			bManager.PrepareDataToSave();
 			sManager.SaveData();
+
+			print("out of focus");
 		}
 	}
 

@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static BusinessDescription;
 using static Configuration;
 
 public class UpgradeController : MonoBehaviour
 {
-
 	[SerializeField] Business mBusiness;
 
 	[SerializeField] UpgradeButton upgradeButtonPrefab;
@@ -26,7 +26,7 @@ public class UpgradeController : MonoBehaviour
 		}
 	}
 
-	public void InstantiateUpgradables(List<Configuration.UpgradeInfo> upgrades)
+	public void InstantiateUpgradables(List<UpgradeInfo> upgrades)
 	{
 		upgradeButtons = new List<UpgradeButton>();
 
@@ -47,5 +47,17 @@ public class UpgradeController : MonoBehaviour
 			modifier += upg.Income;
 
 		UpgradeModifier = modifier;
+	}
+
+	public void UpdateUpgradeDescriptions( List<UpgradeInfo> upgradelist)
+	{
+		for(int i = 0; i < upgradeButtons.Count; i++)
+		{
+			if(upgradeButtons[i].UpgradeName == upgradelist[0].upgradeName)
+			{
+				upgradelist[0].purchasedStatus = upgradeButtons[i].UpgradeStatus;
+				continue;
+			}
+		}
 	}
 }

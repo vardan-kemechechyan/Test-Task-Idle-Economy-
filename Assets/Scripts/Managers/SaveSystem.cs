@@ -4,7 +4,7 @@ using System.IO;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public class SaveSystem : Singleton<BusinessManager>
+public class SaveSystem : MonoBehaviour
 {
 	[SerializeField] string json_save;
 	[SerializeField] Configuration config;
@@ -70,6 +70,6 @@ public class SaveSystem : Singleton<BusinessManager>
 	[System.Serializable]
 	public class SaveStructure
 	{
-		public List<Configuration.BusinessDescription> businessessInformation = new List<Configuration.BusinessDescription>();
+		public List<BusinessDescription> businessessInformation = new List<BusinessDescription>();
 	}
 }

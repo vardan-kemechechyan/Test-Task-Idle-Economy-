@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Business : MonoBehaviour
 {
-	Configuration.BusinessDescription thisBusinessDescription;
+	BusinessDescription thisBusinessDescription;
 
 	[SerializeField] NameController nController;
 	[SerializeField] ProgressController pbController;
@@ -22,7 +22,7 @@ public class Business : MonoBehaviour
 
 	#endregion
 
-	#region Setters and Getters
+	#region Properties
 
 	public bool Purchased
 	{
@@ -49,7 +49,7 @@ public class Business : MonoBehaviour
 
 	#endregion
 
-	public void InstantiateBusiness(Configuration.BusinessDescription businessDescription)
+	public void InstantiateBusiness(BusinessDescription businessDescription)
 	{
 		thisBusinessDescription = businessDescription;
 
@@ -72,6 +72,15 @@ public class Business : MonoBehaviour
 	public void CalculateIncome()
 	{
 		CustomGameEventList.GenerateIncome( FinalIncome );
+	}
+
+	public void UpdateBusinessDescription() 
+	{
+		thisBusinessDescription.purchased = Purchased;
+		thisBusinessDescription.businessInfo.progressBarValue = pbController.ProgressValue;
+		thisBusinessDescription.businessInfo.level = bController.LevelValue;
+
+		upgController.UpdateUpgradeDescriptions(thisBusinessDescription.businessInfo.Upgrades);
 	}
 
 	public void UpdateFinalIncome()

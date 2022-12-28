@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BusinessInfoController : MonoBehaviour
+public class BusinessInfoController : MonoBehaviour, IPurchasable
 {
 	[SerializeField] Business mBusiness;
 	
 	[SerializeField] TextMeshProUGUI levelValueUI;
 	[SerializeField] TextMeshProUGUI levelUpCostValueUI;
 
+	BusinessManager bManager;
+
+	#region Fields
+
 	int levelValue;
+	float baseIncomeValue;
+	float baselevelUpCost;
+
+	#endregion
+
+	#region Properties
 	public int LevelValue
 	{
 		get { return levelValue; }
@@ -21,7 +31,6 @@ public class BusinessInfoController : MonoBehaviour
 		}
 	}
 
-	float baseIncomeValue;
 	public float BaseIncomeValue
 	{
 		get { return baseIncomeValue; } 
@@ -30,7 +39,7 @@ public class BusinessInfoController : MonoBehaviour
 			baseIncomeValue = value;
 		}
 	}
-	float baselevelUpCost;
+	
 	public float BaselevelUpCost
 	{
 		get { return baselevelUpCost; }
@@ -45,6 +54,8 @@ public class BusinessInfoController : MonoBehaviour
 		get { return (LevelValue + 1) * BaselevelUpCost; }
 	}
 
+	#endregion
+	
 	void UpdateLevelUpCostUI()
 	{
 		levelUpCostValueUI.text = $"cost: ${FinalLevelUpCost}";
@@ -59,10 +70,18 @@ public class BusinessInfoController : MonoBehaviour
 		UpdateLevelUpCostUI();
 	}
 
-	public void LevelUp()
+	public void Purchase()
 	{
-		LevelValue++;
-		mBusiness.UpdateFinalIncome();
-		UpdateLevelUpCostUI();
+		if(bManager == null) bManager = BusinessManager.GetInstance();
+
+		if(bManager.RequestPermissionToBuy( FinalLevelUpCost ))
+		{
+			LevelValue++;
+
+			mBusiness.UpdateFinalIncome();
+			mBusiness.Purchased = true;
+
+			UpdateLevelUpCostUI();
+		}
 	}
 }

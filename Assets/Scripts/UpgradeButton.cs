@@ -2,24 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static BusinessDescription;
 
-public class UpgradeButton : MonoBehaviour
+public class UpgradeButton : MonoBehaviour, IPurchasable
 {
 	[SerializeField] TextMeshProUGUI nameUI;
 	[SerializeField] TextMeshProUGUI incomeUI;
 	[SerializeField] TextMeshProUGUI levelupCostUI;
+	[SerializeField] Button button;
+
+	UpgradeController pUpgController;
+	BusinessManager bManager;
+
+	#region Fields
 
 	bool upgradeStatus;
+	string upgradeName;
+	float income;
+	float levelupCost;
+
+	#endregion
+
+	#region Properties
 	public bool UpgradeStatus
 	{
 		get { return upgradeStatus; }
 		set
 		{
 			upgradeStatus = value;
+			button.interactable = !value;
+			levelupCostUI.text = "BOUGHT";
 		}
 	}
 
-	string upgradeName;
 	public string UpgradeName
 	{
 		get { return upgradeName; }
@@ -30,18 +46,16 @@ public class UpgradeButton : MonoBehaviour
 		}
 	}
 
-	float income;
 	public float Income
 	{
-		get { return income; }
+		get { return income / 100 * (UpgradeStatus ? 1 : 0); }
 		set
 		{
-			income = value/100 * ( UpgradeStatus ? 1 : 0 ) ;
+			income = value;
 			incomeUI.text = $"income: +{value}%";
 		}
 	}
 
-	float levelupCost;
 	public float LevelupCost
 	{
 		get { return levelupCost; }
@@ -52,11 +66,33 @@ public class UpgradeButton : MonoBehaviour
 		}
 	}
 
-	public void Instantiate( Configuration.UpgradeInfo upgrade)
+	#endregion
+	
+	
+	public void Instantiate( UpgradeInfo upgrade)
 	{
+		button = GetComponent<Button>();
+		button.onClick.AddListener( Purchase );
+
 		UpgradeStatus = upgrade.purchasedStatus;
 		UpgradeName = upgrade .upgradeName;
 		Income = upgrade.incomeRate;
 		LevelupCost = upgrade.cost;
+
+		pUpgController = transform.parent.GetComponent<UpgradeController>();
+	}
+
+	public void Purchase()
+	{
+		if( UpgradeStatus ) return;
+
+		if(bManager == null) bManager = BusinessManager.GetInstance();
+
+		if(bManager.RequestPermissionToBuy( LevelupCost ) )
+		{
+			UpgradeStatus = true;
+
+			pUpgController.UpdateUpgradeModifier();
+		}
 	}
 }

@@ -167,6 +167,7 @@ MonoBehaviour:
   nameUI: {fileID: 3487464896154213933}
   incomeUI: {fileID: 3487464894955828139}
   levelupCostUI: {fileID: 3487464896152364867}
+  button: {fileID: 0}
 --- !u!1 &3487464894955828137
 GameObject:
   m_ObjectHideFlags: 0
